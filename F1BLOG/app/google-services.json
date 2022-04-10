@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "277856236384",
+    "project_id": "f1-blog",
+    "storage_bucket": "f1-blog.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277856236384:android:de04c2a41dcbae1cc0e405",
+        "android_client_info": {
+          "package_name": "hu.kotprog.f1blog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277856236384-44b2cc8acd8j57oi6oclo7aa4e0sp1mk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIpSdyIw3nri7_JhT2iW2-U61guq5OsK8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277856236384-44b2cc8acd8j57oi6oclo7aa4e0sp1mk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
