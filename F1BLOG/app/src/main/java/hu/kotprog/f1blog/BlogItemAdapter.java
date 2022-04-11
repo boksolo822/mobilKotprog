@@ -111,6 +111,9 @@ public class BlogItemAdapter extends RecyclerView.Adapter<BlogItemAdapter.ViewHo
             titleText.setText(currentItem.getTitle());
 
             Glide.with(context).load(currentItem.getImageResource()).into(itemImage);
+
+
+            itemView.findViewById(R.id.readButton).setOnClickListener(view -> ((ListBlogsActivity)context).toRead(currentItem));
         }
     }
 

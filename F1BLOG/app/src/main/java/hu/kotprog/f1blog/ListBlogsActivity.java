@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 
@@ -66,6 +67,15 @@ public class ListBlogsActivity extends AppCompatActivity {
             }
             mAdapter.notifyDataSetChanged();
         });
+
+    }
+
+
+    public void toRead(BlogItem item){
+        ViewBlogActivity.title=item.getTitle();
+
+        Intent toView=new Intent(ListBlogsActivity.this,ViewBlogActivity.class);
+        startActivity(toView);
 
     }
 
