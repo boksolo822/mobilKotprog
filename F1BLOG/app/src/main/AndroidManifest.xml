@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.F1BLOG">
         <activity
-            android:name=".PostActicity"
+            android:name=".ViewBlogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostActivity"
             android:exported="false" />
         <activity
             android:name=".ListBlogsActivity"
