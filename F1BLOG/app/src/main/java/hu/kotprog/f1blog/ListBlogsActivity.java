@@ -73,6 +73,8 @@ public class ListBlogsActivity extends AppCompatActivity {
 
     public void toRead(BlogItem item){
         ViewBlogActivity.title=item.getTitle();
+        ViewBlogActivity.longText=item.getLongerText();
+        ViewBlogActivity.imageResource=item.getImageResource();
 
         Intent toView=new Intent(ListBlogsActivity.this,ViewBlogActivity.class);
         startActivity(toView);

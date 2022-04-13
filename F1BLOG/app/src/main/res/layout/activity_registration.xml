@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700"
+    android:background="@color/backGray"
     tools:context=".RegistrationActivity">
 
 
@@ -12,7 +12,7 @@
         android:id="@+id/editTextEmail"
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="256dp"
         android:background="@color/design_default_color_surface"
         android:ems="10"
         android:hint="E-mail cím"
@@ -26,7 +26,7 @@
         android:id="@+id/editTextPassword"
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="12dp"
         android:background="@color/design_default_color_surface"
         android:ems="10"
         android:hint="Jelszó"
@@ -40,7 +40,7 @@
         android:id="@+id/editTextPasswordConfirm"
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="12dp"
         android:background="@color/design_default_color_surface"
         android:ems="10"
         android:hint="Jelszó megerősítése"
@@ -50,13 +50,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
+
     <Button
         android:id="@+id/registrationButton"
         android:layout_width="0dp"
         android:layout_height="85dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="Regisztráció"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPasswordConfirm" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="231dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="146dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="casual"
+        android:text="Blog"
+        android:textSize="48sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
