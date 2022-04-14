@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class BlogItemAdapter extends RecyclerView.Adapter<BlogItemAdapter.ViewHolder> implements Filterable {
     private ArrayList<BlogItem> blogItemsData;
@@ -110,10 +109,10 @@ public class BlogItemAdapter extends RecyclerView.Adapter<BlogItemAdapter.ViewHo
         public void bindTo(BlogItem currentItem) {
             titleText.setText(currentItem.getTitle());
 
-            Glide.with(context).load(currentItem.getImageResource()).into(itemImage);
+            Glide.with(context).load(currentItem.getImage()).into(itemImage);
 
 
-            itemView.findViewById(R.id.readButton).setOnClickListener(view -> ((ListBlogsActivity)context).toRead(currentItem));
+           itemView.findViewById(R.id.readButton).setOnClickListener(view -> ((ListBlogsActivity)context).toRead(currentItem));
         }
     }
 

@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -15,7 +17,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class ListBlogsActivity extends AppCompatActivity {
 
@@ -61,43 +62,45 @@ public class ListBlogsActivity extends AppCompatActivity {
                 mItemList.add(item);
             }
 
-            if(mItemList.size()==0){
-                initializeData();
+            if (mItemList.size() == 0) {
+              //  initializeData();
                 queryData();
             }
             mAdapter.notifyDataSetChanged();
         });
-
     }
 
 
-    public void toRead(BlogItem item){
-        ViewBlogActivity.title=item.getTitle();
-        ViewBlogActivity.longText=item.getLongerText();
-        ViewBlogActivity.imageResource=item.getImageResource();
+   public void toRead(BlogItem item) {
+        ViewBlogActivity.title = item.getTitle();
+        ViewBlogActivity.longText = item.getLongerText();
+        ViewBlogActivity.image = item.getImage();
 
-        Intent toView=new Intent(ListBlogsActivity.this,ViewBlogActivity.class);
+       Intent toView = new Intent(ListBlogsActivity.this, ViewBlogActivity.class);
         startActivity(toView);
 
+   }
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.logged_menu, menu);
+        MenuItem menuitem = menu.findItem(R.id.newPost);
+
+        return true;
     }
 
-    private void initializeData() {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
 
-        String[] titleList = getResources().getStringArray(R.array.blog_item_title);
-        String[] longText = getResources().getStringArray(R.array.blog_item_longtext);
-        TypedArray itemsImageResource = getResources().obtainTypedArray(R.array.blog_item_images);
-
-        //
-
-        for (int i = 0; i < titleList.length; i++) {
-
-            mItems.add(new BlogItem(
-                    titleList[i],
-                    longText[i],
-                    itemsImageResource.getResourceId(i, 0)));
+        if (menuItem.getItemId() == R.id.newPost) {
+            Intent tonewPost = new Intent(ListBlogsActivity.this, PostActivity.class);
+            startActivity(tonewPost);
         }
 
-        itemsImageResource.recycle();
-        //  mAdapter.notifyDataSetChanged();
+
+        return true;
     }
 }
