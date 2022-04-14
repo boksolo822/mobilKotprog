@@ -13,11 +13,11 @@ public class ViewBlogActivity extends AppCompatActivity {
 
     public static String title;
     public static String longText;
-    public static int imageResource;
+    public static String image;
 
 
     private TextView titleText;
-    private ImageView image;
+    private ImageView titleImage;
     private TextView blog;
 
     @Override
@@ -28,8 +28,8 @@ public class ViewBlogActivity extends AppCompatActivity {
        titleText = findViewById(R.id.titleText);
        titleText.setText(title);
 
-       image = findViewById(R.id.blogImage);
-       Glide.with(this).load(imageResource).into(image);
+       titleImage = findViewById(R.id.blogImage);
+       Glide.with(this).load(image).into(titleImage);
 
 
         blog = findViewById(R.id.blogText);

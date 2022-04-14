@@ -1,19 +1,26 @@
 package hu.kotprog.f1blog;
 
 public class BlogItem {
+    private String blogKey;
     private String title;
     private String longerText;
-    private int imageResource;
+    private String image;
 
+    public String getBlogKey() {
+        return blogKey;
+    }
 
+    public void setBlogKey(String blogKey) {
+        this.blogKey = blogKey;
+    }
 
     public BlogItem(){}
 
 
-    public BlogItem(String title, String longerText, int imageResource) {
+    public BlogItem(String title, String longerText, String image) {
         this.title = title;
         this.longerText = longerText;
-        this.imageResource = imageResource;
+        this.image = image;
     }
 
     public String getTitle() {
@@ -32,11 +39,11 @@ public class BlogItem {
         this.longerText = longerText;
     }
 
-    public int getImageResource() {
-        return imageResource;
+    public String getImage() {
+        return image;
     }
 
-    public void setImageResource(int imageResource) {
-        this.imageResource = imageResource;
+    public void setImage(String image) {
+        this.image = image;
     }
 }
