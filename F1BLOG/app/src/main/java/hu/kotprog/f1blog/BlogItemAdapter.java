@@ -16,14 +16,14 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class BlogItemAdapter extends RecyclerView.Adapter<BlogItemAdapter.ViewHolder> implements Filterable {
-    private ArrayList<BlogItem> blogItemsData;
-    private ArrayList<BlogItem> blogItemsDataAll;
+public class BlogItemAdapter extends RecyclerView.Adapter < BlogItemAdapter.ViewHolder > implements Filterable {
+    private ArrayList < BlogItem > blogItemsData;
+    private ArrayList < BlogItem > blogItemsDataAll;
     private Context context;
     private int lastPosition = -1;
 
 
-    BlogItemAdapter(Context context, ArrayList<BlogItem> itemsData) {
+    BlogItemAdapter(Context context, ArrayList < BlogItem > itemsData) {
         this.blogItemsData = itemsData;
         this.blogItemsDataAll = itemsData;
         this.context = context;
@@ -59,7 +59,7 @@ public class BlogItemAdapter extends RecyclerView.Adapter<BlogItemAdapter.ViewHo
 
         @Override
         protected FilterResults performFiltering(CharSequence charSequence) {
-            ArrayList<BlogItem> filteredList = new ArrayList<>();
+            ArrayList < BlogItem > filteredList = new ArrayList < > ();
             FilterResults results = new FilterResults();
 
 
@@ -71,7 +71,7 @@ public class BlogItemAdapter extends RecyclerView.Adapter<BlogItemAdapter.ViewHo
 
                 String filterPattern = charSequence.toString().toLowerCase().trim();
 
-                for (BlogItem item : blogItemsDataAll) {
+                for (BlogItem item: blogItemsDataAll) {
                     if (item.getTitle().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
@@ -112,12 +112,9 @@ public class BlogItemAdapter extends RecyclerView.Adapter<BlogItemAdapter.ViewHo
             Glide.with(context).load(currentItem.getImage()).into(itemImage);
 
 
-           itemView.findViewById(R.id.readButton).setOnClickListener(view -> ((ListBlogsActivity)context).toRead(currentItem));
+            itemView.findViewById(R.id.readButton).setOnClickListener(view -> ((ListBlogsActivity) context).toRead(currentItem));
         }
     }
 
 
 }
-
-
-

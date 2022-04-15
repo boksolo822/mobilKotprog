@@ -63,7 +63,7 @@ public class ListBlogsActivity extends AppCompatActivity {
             }
 
             if (mItemList.size() == 0) {
-              //  initializeData();
+
                 queryData();
             }
             mAdapter.notifyDataSetChanged();

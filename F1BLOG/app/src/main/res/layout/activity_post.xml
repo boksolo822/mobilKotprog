@@ -7,51 +7,54 @@
     android:background="@color/backGray"
     tools:context=".PostActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="401dp">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/blogImage"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="225dp"
-            android:background="#2d2d2d"
-            android:scaleType="centerCrop"
-            tools:ignore="Suspicious0dp"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-        <EditText
-            android:id="@+id/postTitle"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
-            android:background="@color/design_default_color_surface"
-            android:ems="10"
-            android:hint="Cím..."
-            android:inputType="textPersonName"
-            tools:ignore="MissingConstraints" />
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/postLong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="132dp"
-            android:background="@color/design_default_color_surface"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="Sztori..."
-            android:inputType="textMultiLine"
-            tools:ignore="SpeakableTextPresentCheck" />
+            <ImageView
+                android:id="@+id/blogImage"
+                android:layout_width="match_parent"
+                android:layout_height="225dp"
+                android:background="#2d2d2d"
+                android:scaleType="centerCrop"
+                tools:ignore="Suspicious0dp"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-        <Button
-            android:id="@+id/postButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Posztolás" />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/postTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:background="@color/design_default_color_surface"
+                android:ems="10"
+                android:hint="Cím..."
+                android:inputType="textPersonName"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/postLong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="132dp"
+                android:background="@color/design_default_color_surface"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Sztori..."
+                android:inputType="textMultiLine"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/postButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Posztolás" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
