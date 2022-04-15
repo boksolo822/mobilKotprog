@@ -25,11 +25,11 @@ public class ViewBlogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_blog);
 
-       titleText = findViewById(R.id.titleText);
-       titleText.setText(title);
+        titleText = findViewById(R.id.titleText);
+        titleText.setText(title);
 
-       titleImage = findViewById(R.id.blogImage);
-       Glide.with(this).load(image).into(titleImage);
+        titleImage = findViewById(R.id.blogImage);
+        Glide.with(this).load(image).into(titleImage);
 
 
         blog = findViewById(R.id.blogText);

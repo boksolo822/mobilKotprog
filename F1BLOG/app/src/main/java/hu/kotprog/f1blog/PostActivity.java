@@ -31,8 +31,8 @@ import com.google.firebase.storage.UploadTask;
 public class PostActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final int PReqCode = 2 ;
-    private static final int REQUESCODE = 2 ;
+    private static final int PReqCode = 2;
+    private static final int REQUESCODE = 2;
     private EditText title;
     private EditText longText;
     private ImageView blogImage;
@@ -70,12 +70,11 @@ public class PostActivity extends AppCompatActivity
                             @Override
                             public void onSuccess(Uri uri) {
                                 String imageDownlaodLink = uri.toString();
-                                // create post Object
+
                                 BlogItem blog = new BlogItem(title.getText().toString(),
                                         longText.getText().toString(),
                                         imageDownlaodLink);
 
-                                // Add post to firebase database
 
                                 addPost(blog);
 
@@ -84,13 +83,6 @@ public class PostActivity extends AppCompatActivity
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                // something goes wrong uploading picture
-
-                                System.out.println("BAJVA");
-
-//                                showMessage(e.getMessage());
-//                                popupClickProgress.setVisibility(View.INVISIBLE);
-//                                popupAddBtn.setVisibility(View.VISIBLE);
 
 
                             }
@@ -105,16 +97,9 @@ public class PostActivity extends AppCompatActivity
         });
 
 
-
-
-
-
     }
 
     private void addPost(BlogItem item) {
-
-        System.out.println("Megpróbálom addolni.");
-
 
 
         FirebaseFirestore mFireStore;
@@ -124,9 +109,8 @@ public class PostActivity extends AppCompatActivity
 
         mItems.add(item);
 
-        Intent toList=new Intent(PostActivity.this,ListBlogsActivity.class);
+        Intent toList = new Intent(PostActivity.this, ListBlogsActivity.class);
         startActivity(toList);
-
 
 
     }
@@ -142,19 +126,13 @@ public class PostActivity extends AppCompatActivity
     }
 
 
-
-
-
     private void setupPopupImageClick() {
 
 
-       blogImage.setOnClickListener(new View.OnClickListener() {
+        blogImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("Érzékelte");
-                // here when image clicked we need to open the gallery
-                // before we open the gallery we need to check if our app have the access to user files
-                // we did this before in register activity I'm just going to copy the code to save time ...
+
 
                 checkAndRequestForPermission();
 
@@ -162,16 +140,10 @@ public class PostActivity extends AppCompatActivity
         });
 
 
-
     }
 
 
-
-
-
-
     private void checkAndRequestForPermission() {
-
 
 
         if (ContextCompat.checkSelfPermission(PostActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -180,64 +152,42 @@ public class PostActivity extends AppCompatActivity
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(PostActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
 
-                Toast.makeText(PostActivity.this,"Please accept for required permission",Toast.LENGTH_SHORT).show();
+                Toast.makeText(PostActivity.this, "Fogadd el a szükséges engedélykéréseket!", Toast.LENGTH_SHORT).show();
 
-            }
-
-            else
-            {
+            } else {
 
                 ActivityCompat.requestPermissions(PostActivity.this,
                         new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                         PReqCode);
             }
         }
-        else
 
-        System.out.println("Galériát kéne megnyitni");
-            openGallery();
+
+        openGallery();
     }
-
-
 
 
     private void openGallery() {
 
-        System.out.println("Ez mégis micsoda?");
         Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
         galleryIntent.setType("image/*");
-        startActivityForResult(galleryIntent,REQUESCODE);
+        startActivityForResult(galleryIntent, REQUESCODE);
     }
-
-
-
-
-
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK && requestCode == REQUESCODE && data != null ) {
+        if (resultCode == RESULT_OK && requestCode == REQUESCODE && data != null) {
 
-            // the user has successfully picked an image
-            // we need to save its reference to a Uri variable
-            pickedImgUri = data.getData() ;
+            pickedImgUri = data.getData();
             blogImage.setImageURI(pickedImgUri);
 
         }
 
 
     }
-
-
-
-
-
-
-
-
 
 
 }

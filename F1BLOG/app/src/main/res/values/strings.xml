@@ -1,37 +1,3 @@
 <resources>
     <string name="app_name">F1 BLOG</string>
-
-
-    <string-array name="blog_item_title">
-        <item>Mi történt a Mercedessel?</item>
-        <item> Hogyan tört fel a Haas?</item>
-        <item>Pénz beszél, Stroll ugat.</item>
-        <item>Itt jó-e a kép?</item>
-        <item>Na és itt?</item>
-    </string-array>
-
-
-    <string-array name="blog_item_longtext">
-        <item>Ennyi volt a Mercedes uralma? Vajon a Ferrari útjára lép?</item>
-        <item>Vajon minek köszönhető a hatalmas előrelépés?</item>
-        <item>Miért akar beleszólni egy üzeltember egy Forma1-es csapat működésébe? Talán azt gondolja hogy
-        a pénze tudással is felruházza? Mindenesetre amíg ez az ember dirigál az Astonnál, addig aligha lesz esélyük
-            nem hogy a vb címre, de a pontszerzés is csodaszámra fog menni.
-        </item>
-        <item>Nem fontos
-        </item>
-        <item>Ez sem.
-        </item>
-    </string-array>
-
-
-    <array name="blog_item_images">
-        <item>@drawable/hamilton</item>
-        <item>@drawable/magnussen</item>
-        <item>@drawable/vettel</item>
-        <item>@drawable/hamilton</item>
-        <item>@drawable/magnussen</item>
-    </array>
-
-
 </resources>
