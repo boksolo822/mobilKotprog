@@ -1,26 +1,37 @@
 package hu.kotprog.f1blog;
 
 public class BlogItem {
-    private String blogKey;
+
     private String title;
     private String longerText;
     private String image;
+    private int clicks;
 
-    public String getBlogKey() {
-        return blogKey;
+    public int getClicks() {
+        return clicks;
     }
 
-    public void setBlogKey(String blogKey) {
-        this.blogKey = blogKey;
+    public void setClicks(int clicks) {
+        this.clicks = clicks;
     }
 
-    public BlogItem(){}
 
+    public BlogItem() {
+    }
+
+//    public int _getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public BlogItem(String title, String longerText, String image) {
         this.title = title;
         this.longerText = longerText;
         this.image = image;
+        this.clicks = 0;
     }
 
     public String getTitle() {

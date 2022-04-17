@@ -1,6 +1,7 @@
 package hu.kotprog.f1blog;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -54,7 +55,7 @@ public class ListBlogsActivity extends AppCompatActivity {
     private void queryData() {
         mItemList.clear();
 
-        mItems.orderBy("title").limit(50).get().addOnSuccessListener(queryDocumentSnapshots -> {
+        mItems.orderBy("title").get().addOnSuccessListener(queryDocumentSnapshots -> {
 
             for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
 
@@ -76,6 +77,7 @@ public class ListBlogsActivity extends AppCompatActivity {
         ViewBlogActivity.longText = item.getLongerText();
         ViewBlogActivity.image = item.getImage();
 
+
        Intent toView = new Intent(ListBlogsActivity.this, ViewBlogActivity.class);
         startActivity(toView);
 
@@ -85,11 +87,12 @@ public class ListBlogsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
+
         getMenuInflater().inflate(R.menu.logged_menu, menu);
         MenuItem menuitem = menu.findItem(R.id.newPost);
 
-        return true;
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
