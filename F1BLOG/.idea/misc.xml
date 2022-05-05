@@ -17,11 +17,14 @@
         <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/layout/activity_list_blogs_recycle.xml" value="0.17831813576494426" />
         <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/layout/activity_post.xml" value="0.22" />
+        <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/layout/activity_my_posts.xml" value="0.17831813576494426" />
+        <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/layout/activity_post.xml" value="0.25" />
         <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/layout/activity_post_activity.xml" value="0.3342391304347826" />
         <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/layout/activity_registration.xml" value="0.22" />
         <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/layout/activity_view_blog.xml" value="0.5" />
         <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/layout/list_blogs.xml" value="0.5" />
+        <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/layout/list_myBlogs.xml" value="0.2875905797101449" />
+        <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/layout/list_myblogs.xml" value="0.24653739612188366" />
         <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/menu/logged_menu.xml" value="0.2612568035625928" />
         <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1765" />
         <entry key="..\:/mobilKotprog/F1BLOG/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />

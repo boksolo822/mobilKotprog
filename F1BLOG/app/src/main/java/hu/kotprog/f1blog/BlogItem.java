@@ -2,6 +2,8 @@ package hu.kotprog.f1blog;
 
 public class BlogItem {
 
+private String id;
+    private String userEmail;
     private String title;
     private String longerText;
     private String image;
@@ -19,13 +21,21 @@ public class BlogItem {
     public BlogItem() {
     }
 
-//    public int _getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
+    public String _getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
 
     public BlogItem(String title, String longerText, String image) {
         this.title = title;

@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText logPass;
     private Button logButton;
     private Button newAccButton;
-
     private FirebaseAuth mAuth;
 
     @Override
@@ -34,30 +33,28 @@ public class LoginActivity extends AppCompatActivity {
         logEmail = (EditText) findViewById(R.id.loginEmail);
         logPass = (EditText) findViewById(R.id.loginPassword);
         logButton = (Button) findViewById(R.id.loginButton);
-        newAccButton=(Button)findViewById(R.id.toRegButton);
+        newAccButton = (Button) findViewById(R.id.toRegButton);
 
         logButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-            String email=logEmail.getText().toString();
-            String password=logPass.getText().toString();
+                String email = logEmail.getText().toString();
+                String password = logPass.getText().toString();
 
-            mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        Intent toBlogs=new Intent(LoginActivity.this,ListBlogsActivity.class);
-                        startActivity(toBlogs);
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Intent toBlogs = new Intent(LoginActivity.this, ListBlogsActivity.class);
+                            startActivity(toBlogs);
+                        } else {
+                            System.out.println(task.getException().getMessage());
+                        }
                     }
-                    else{
-                        System.out.println(task.getException().getMessage());
-                    }
-                }
-            });
+                });
             }
         });
-
 
         newAccButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,9 +64,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-
-    public void toReg(){
-        Intent toRegAct=new Intent(LoginActivity.this, RegistrationActivity.class);
+    public void toReg() {
+        Intent toRegAct = new Intent(LoginActivity.this, RegistrationActivity.class);
         startActivity(toRegAct);
     }
 
