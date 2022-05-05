@@ -18,27 +18,28 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 
-public class ListBlogsActivity extends AppCompatActivity {
+public class MyPosts extends AppCompatActivity {
+
 
     private FirebaseUser user;
     private FirebaseAuth mAuth;
     private RecyclerView blogRecycler;
     private ArrayList<BlogItem> mItemList;
-    private BlogItemAdapter mAdapter;
+    private MyPostsAdapter mAdapter;
     private FirebaseFirestore mFireStore;
     private CollectionReference mItems;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_blogs_recycle);
-
+        setContentView(R.layout.activity_my_posts);
 
         blogRecycler = findViewById(R.id.blogRecycler);
         blogRecycler.setLayoutManager(new GridLayoutManager(this,1));
         mItemList = new ArrayList<>();
-        mAdapter = new BlogItemAdapter(this, mItemList);
+        mAdapter = new MyPostsAdapter(this, mItemList);
         blogRecycler.setAdapter(mAdapter);
 
 
@@ -56,7 +57,7 @@ public class ListBlogsActivity extends AppCompatActivity {
         Query whereQuery=mItems.orderBy("clicks");
 
 
-            whereQuery.get().addOnSuccessListener(queryDocumentSnapshots -> {
+        whereQuery.get().addOnSuccessListener(queryDocumentSnapshots -> {
 
             for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
 
@@ -74,17 +75,17 @@ public class ListBlogsActivity extends AppCompatActivity {
     }
 
 
-   public void toRead(BlogItem item) {
+    public void toRead(BlogItem item) {
         ViewBlogActivity.title = item.getTitle();
         ViewBlogActivity.longText = item.getLongerText();
         ViewBlogActivity.image = item.getImage();
         mItems.document(item._getId()).update("clicks", item.getClicks() + 1);
 
 
-       Intent toView = new Intent(ListBlogsActivity.this, ViewBlogActivity.class);
+        Intent toView = new Intent(MyPosts.this, ViewBlogActivity.class);
         startActivity(toView);
 
-   }
+    }
 
 
 
@@ -102,15 +103,17 @@ public class ListBlogsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
 
         if (menuItem.getItemId() == R.id.newPost) {
-            Intent tonewPost = new Intent(ListBlogsActivity.this, PostActivity.class);
+            Intent tonewPost = new Intent(MyPosts.this, PostActivity.class);
             startActivity(tonewPost);
         }
 
         if(menuItem.getItemId()==R.id.myPosts){
-         Intent tonewPost = new Intent(ListBlogsActivity.this, MyPosts.class);
-         startActivity(tonewPost);
-    }
+            Intent tonewPost = new Intent(MyPosts.this, MyPosts.class);
+            startActivity(tonewPost);
+        }
 
         return true;
     }
-}
+
+
+    }

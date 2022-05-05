@@ -16,6 +16,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:fontFamily="serif"
+                android:text="Új poszt"
+                android:textAlignment="center" />
+
             <ImageView
                 android:id="@+id/blogImage"
                 android:layout_width="match_parent"
@@ -27,7 +35,7 @@
 
             <EditText
                 android:id="@+id/postTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="28dp"
                 android:background="@color/design_default_color_surface"
@@ -38,7 +46,7 @@
 
             <EditText
                 android:id="@+id/postLong"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="132dp"
                 android:background="@color/design_default_color_surface"
@@ -50,7 +58,7 @@
 
             <Button
                 android:id="@+id/postButton"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Posztolás" />

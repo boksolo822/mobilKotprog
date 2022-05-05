@@ -8,5 +8,9 @@
         android:title="New"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/myPosts"
+        android:title="Posztjaim"
+        app:showAsAction="always" />
 
 </menu>
