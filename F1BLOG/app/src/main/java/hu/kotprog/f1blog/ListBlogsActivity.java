@@ -111,6 +111,18 @@ public class ListBlogsActivity extends AppCompatActivity {
          startActivity(tonewPost);
     }
 
+        if(menuItem.getItemId()==R.id.logOut){
+            MainActivity.logOut();
+            Intent toLog = new Intent(ListBlogsActivity.this, LoginActivity.class);
+            startActivity(toLog);
+        }
+
         return true;
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        queryData();
     }
 }
