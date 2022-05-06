@@ -24,10 +24,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText editTextPasswordConfirm;
     private Button registrationButton;
     private Button toLoginBtn;
-
-
     private FirebaseAuth mAuth;
-    private final String LOG_TAG = RegistrationActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +52,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 String password = editTextPassword.getText().toString();
                 String passwordConf = editTextPasswordConfirm.getText().toString();
 
-
                 if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(passwordConf)) {
-
 
                     if (password.equals(passwordConf)) {
 
@@ -66,9 +61,9 @@ public class RegistrationActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
                                 if (task.isSuccessful()) {
+                                    Toast.makeText(RegistrationActivity.this, "Sikeres regisztráció!", Toast.LENGTH_LONG).show();
                                     toLogin();
                                 } else {
-
                                 }
                             }
                         });
@@ -76,17 +71,10 @@ public class RegistrationActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(RegistrationActivity.this, "A jelszavak nem egyeznek", Toast.LENGTH_LONG).show();
                     }
-
-
                 }
-
-
             }
         });
-
-
     }
-
 
     private void toLogin() {
         Intent loginIntent = new Intent(this, LoginActivity.class);

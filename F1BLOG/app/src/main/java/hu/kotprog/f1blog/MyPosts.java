@@ -23,9 +23,6 @@ import java.util.ArrayList;
 
 public class MyPosts extends AppCompatActivity {
 
-
-
-
     private RecyclerView blogRecycler;
     private ArrayList<BlogItem> mItemList;
     private MyPostsAdapter mAdapter;
@@ -34,46 +31,29 @@ public class MyPosts extends AppCompatActivity {
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String userEmail = user.getEmail();
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_posts);
-
         blogRecycler = findViewById(R.id.blogRecycler);
         blogRecycler.setLayoutManager(new GridLayoutManager(this,1));
         mItemList = new ArrayList<>();
         mAdapter = new MyPostsAdapter(this, mItemList);
         blogRecycler.setAdapter(mAdapter);
-
-
         mFireStore = FirebaseFirestore.getInstance();
         mItems = mFireStore.collection("Blogs");
         queryData();
-
-
     }
 
     private void queryData() {
         mItemList.clear();
-
-
         Query whereQuery=mItems.whereEqualTo("userEmail",userEmail);
-
-
         whereQuery.get().addOnSuccessListener(queryDocumentSnapshots -> {
 
             for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-
                 BlogItem item = document.toObject(BlogItem.class);
                 item.setId(document.getId());
                 mItemList.add(item);
-            }
-
-            if (mItemList.size() == 0) {
-
-                queryData();
             }
             mAdapter.notifyDataSetChanged();
         });
@@ -84,23 +64,13 @@ public class MyPosts extends AppCompatActivity {
         ViewBlogActivity.title = item.getTitle();
         ViewBlogActivity.longText = item.getLongerText();
         ViewBlogActivity.image = item.getImage();
-        mItems.document(item._getId()).update("clicks", item.getClicks() + 1);
-
-
         Intent toView = new Intent(MyPosts.this, ViewBlogActivity.class);
         startActivity(toView);
-
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.logged_menu, menu);
-        MenuItem menuitem = menu.findItem(R.id.newPost);
-
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -122,9 +92,6 @@ public class MyPosts extends AppCompatActivity {
             Intent toLog = new Intent(MyPosts.this, LoginActivity.class);
             startActivity(toLog);
         }
-
-
-
         return true;
     }
 
@@ -132,10 +99,8 @@ public class MyPosts extends AppCompatActivity {
         DocumentReference ref = mItems.document(item._getId());
         ref.delete()
                 .addOnSuccessListener(success -> {
-
                 })
                 .addOnFailureListener(fail -> {
-
                 });
 
         queryData();

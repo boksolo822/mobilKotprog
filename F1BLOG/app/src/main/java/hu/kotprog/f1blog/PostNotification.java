@@ -12,7 +12,6 @@ public class PostNotification {
     private NotificationManager manager;
     private Context context;
 
-
     public PostNotification(Context context) {
         this.context = context;
         this.manager=(NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
