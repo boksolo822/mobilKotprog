@@ -20,42 +20,31 @@ import java.util.ArrayList;
 
 public class ListBlogsActivity extends AppCompatActivity {
 
-    private FirebaseUser user;
-    private FirebaseAuth mAuth;
     private RecyclerView blogRecycler;
     private ArrayList<BlogItem> mItemList;
     private BlogItemAdapter mAdapter;
     private FirebaseFirestore mFireStore;
     private CollectionReference mItems;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_blogs_recycle);
-
 
         blogRecycler = findViewById(R.id.blogRecycler);
         blogRecycler.setLayoutManager(new GridLayoutManager(this,1));
         mItemList = new ArrayList<>();
         mAdapter = new BlogItemAdapter(this, mItemList);
         blogRecycler.setAdapter(mAdapter);
-
-
         mFireStore = FirebaseFirestore.getInstance();
         mItems = mFireStore.collection("Blogs");
         queryData();
-
-
     }
 
     private void queryData() {
         mItemList.clear();
 
-
         Query whereQuery=mItems.orderBy("clicks");
-
-
             whereQuery.get().addOnSuccessListener(queryDocumentSnapshots -> {
 
             for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
@@ -63,11 +52,6 @@ public class ListBlogsActivity extends AppCompatActivity {
                 BlogItem item = document.toObject(BlogItem.class);
                 item.setId(document.getId());
                 mItemList.add(item);
-            }
-
-            if (mItemList.size() == 0) {
-
-                queryData();
             }
             mAdapter.notifyDataSetChanged();
         });
@@ -80,8 +64,7 @@ public class ListBlogsActivity extends AppCompatActivity {
         ViewBlogActivity.image = item.getImage();
         mItems.document(item._getId()).update("clicks", item.getClicks() + 1);
 
-
-       Intent toView = new Intent(ListBlogsActivity.this, ViewBlogActivity.class);
+        Intent toView = new Intent(ListBlogsActivity.this, ViewBlogActivity.class);
         startActivity(toView);
 
    }
@@ -90,11 +73,7 @@ public class ListBlogsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         getMenuInflater().inflate(R.menu.logged_menu, menu);
-        MenuItem menuitem = menu.findItem(R.id.newPost);
-
-
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -109,14 +88,13 @@ public class ListBlogsActivity extends AppCompatActivity {
         if(menuItem.getItemId()==R.id.myPosts){
          Intent tonewPost = new Intent(ListBlogsActivity.this, MyPosts.class);
          startActivity(tonewPost);
-    }
+        }
 
         if(menuItem.getItemId()==R.id.logOut){
             MainActivity.logOut();
             Intent toLog = new Intent(ListBlogsActivity.this, LoginActivity.class);
             startActivity(toLog);
         }
-
         return true;
     }
 

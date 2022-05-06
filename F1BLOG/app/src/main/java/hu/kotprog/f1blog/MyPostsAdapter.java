@@ -16,24 +16,15 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class MyPostsAdapter extends RecyclerView.Adapter < MyPostsAdapter.ViewHolder > implements Filterable {
+public class MyPostsAdapter extends RecyclerView.Adapter < MyPostsAdapter.ViewHolder >  {
 
     private ArrayList<BlogItem> blogItemsData;
     private Context context;
-
-
 
     MyPostsAdapter(Context context, ArrayList < BlogItem > itemsData) {
         this.blogItemsData = itemsData;
         this.context = context;
     }
-
-
-    @Override
-    public Filter getFilter() {
-        return null;
-    }
-
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -50,8 +41,6 @@ public class MyPostsAdapter extends RecyclerView.Adapter < MyPostsAdapter.ViewHo
     public int getItemCount() {
         return blogItemsData.size();
     }
-
-
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView titleText;
@@ -70,8 +59,4 @@ public class MyPostsAdapter extends RecyclerView.Adapter < MyPostsAdapter.ViewHo
             itemView.findViewById(R.id.deleteButton).setOnClickListener(view -> ((MyPosts) context).deleteItem(currentItem));
         }
     }
-
-
-
-
 }

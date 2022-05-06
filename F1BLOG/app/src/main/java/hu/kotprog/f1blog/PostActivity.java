@@ -60,25 +60,20 @@ public class PostActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
-
         title = findViewById(R.id.postTitle);
         longText = findViewById(R.id.postLong);
         blogImage = findViewById(R.id.blogImage);
         postButton = findViewById(R.id.postButton);
 
         Animation scale = AnimationUtils.loadAnimation(PostActivity.this, R.anim.postbutton);
-
         setupPopupImageClick();
 
         postButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 postButton.startAnimation(scale);
-
                 StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("blog_images");
-
                 final StorageReference imageFilePath = storageReference.child(pickedImgUri.getLastPathSegment());
-
 
                 imageFilePath.putFile(pickedImgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -95,25 +90,15 @@ public class PostActivity extends AppCompatActivity
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 String userEmail = user.getEmail();
                                 blog.setUserEmail(userEmail);
-
-
                                 addPost(blog);
-
-
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-
-
                             }
                         });
-
-
                     }
                 });
-
-
             }
         });
     }
@@ -130,11 +115,9 @@ public class PostActivity extends AppCompatActivity
         PostNotification noti = new PostNotification(PostActivity.this);
         noti.send(item.getTitle() + " című posztod publikálásra került!");
 
-
         Intent toList = new Intent(PostActivity.this, ListBlogsActivity.class);
         startActivity(toList);
     }
-
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -146,9 +129,7 @@ public class PostActivity extends AppCompatActivity
         super.onPointerCaptureChanged(hasCapture);
     }
 
-
     private void setupPopupImageClick() {
-
 
         blogImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,17 +137,12 @@ public class PostActivity extends AppCompatActivity
                 checkAndRequestForPermission();
             }
         });
-
-
     }
-
 
     private void checkAndRequestForPermission() {
 
-
         if (ContextCompat.checkSelfPermission(PostActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
-
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(PostActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
 
@@ -179,32 +155,22 @@ public class PostActivity extends AppCompatActivity
                         PReqCode);
             }
         }
-
         openGallery();
     }
 
-
     private void openGallery() {
-
         Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent, REQUESCODE);
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK && requestCode == REQUESCODE && data != null) {
-
             pickedImgUri = data.getData();
             blogImage.setImageURI(pickedImgUri);
-
         }
-
-
     }
-
-
 }
