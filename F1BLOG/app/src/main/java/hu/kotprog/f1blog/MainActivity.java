@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void logOut(){
+
         mAuth.signOut();
     }
 }
