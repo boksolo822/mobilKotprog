@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
+    private static FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         mAuth.signOut();
-
     }
 
     @Override
@@ -30,5 +29,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(toLog);
             finish();
         }
+    }
+
+    public static void logOut(){
+        mAuth.signOut();
     }
 }

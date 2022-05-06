@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -21,13 +24,15 @@ import java.util.ArrayList;
 public class MyPosts extends AppCompatActivity {
 
 
-    private FirebaseUser user;
-    private FirebaseAuth mAuth;
+
+
     private RecyclerView blogRecycler;
     private ArrayList<BlogItem> mItemList;
     private MyPostsAdapter mAdapter;
     private FirebaseFirestore mFireStore;
     private CollectionReference mItems;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    String userEmail = user.getEmail();
 
 
 
@@ -54,7 +59,7 @@ public class MyPosts extends AppCompatActivity {
         mItemList.clear();
 
 
-        Query whereQuery=mItems.orderBy("clicks");
+        Query whereQuery=mItems.whereEqualTo("userEmail",userEmail);
 
 
         whereQuery.get().addOnSuccessListener(queryDocumentSnapshots -> {
@@ -107,13 +112,38 @@ public class MyPosts extends AppCompatActivity {
             startActivity(tonewPost);
         }
 
-        if(menuItem.getItemId()==R.id.myPosts){
-            Intent tonewPost = new Intent(MyPosts.this, MyPosts.class);
-            startActivity(tonewPost);
+        if(menuItem.getItemId()==R.id.toStarter){
+            Intent toList = new Intent(MyPosts.this, ListBlogsActivity.class);
+            startActivity(toList);
         }
+
+        if(menuItem.getItemId()==R.id.logOut){
+            MainActivity.logOut();
+            Intent toLog = new Intent(MyPosts.this, LoginActivity.class);
+            startActivity(toLog);
+        }
+
+
 
         return true;
     }
 
+    public void deleteItem(BlogItem item) {
+        DocumentReference ref = mItems.document(item._getId());
+        ref.delete()
+                .addOnSuccessListener(success -> {
 
+                })
+                .addOnFailureListener(fail -> {
+
+                });
+
+        queryData();
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        queryData();
+    }
+}

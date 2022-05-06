@@ -2,6 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <item
+        android:id="@+id/toStarter"
+        android:title="Főoldalra"
+        app:showAsAction="always" />
+
     <item
         android:id="@+id/newPost"
         android:icon="@drawable/ic_addnew"
@@ -11,6 +17,11 @@
     <item
         android:id="@+id/myPosts"
         android:title="Posztjaim"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/logOut"
+        android:title="Kijelentkezés"
         app:showAsAction="always" />
 
 </menu>

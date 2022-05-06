@@ -3,15 +3,25 @@ package hu.kotprog.f1blog;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,7 +29,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+
+import android.view.animation.AnimationUtils;
+
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
@@ -51,11 +66,14 @@ public class PostActivity extends AppCompatActivity
         blogImage = findViewById(R.id.blogImage);
         postButton = findViewById(R.id.postButton);
 
+        Animation scale = AnimationUtils.loadAnimation(PostActivity.this, R.anim.postbutton);
+
         setupPopupImageClick();
 
         postButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                postButton.startAnimation(scale);
 
                 StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("blog_images");
 
@@ -74,6 +92,9 @@ public class PostActivity extends AppCompatActivity
                                 BlogItem blog = new BlogItem(title.getText().toString(),
                                         longText.getText().toString(),
                                         imageDownlaodLink);
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                String userEmail = user.getEmail();
+                                blog.setUserEmail(userEmail);
 
 
                                 addPost(blog);
@@ -95,8 +116,6 @@ public class PostActivity extends AppCompatActivity
 
             }
         });
-
-
     }
 
     private void addPost(BlogItem item) {
@@ -106,14 +125,16 @@ public class PostActivity extends AppCompatActivity
         CollectionReference mItems;
         mFireStore = FirebaseFirestore.getInstance();
         mItems = mFireStore.collection("Blogs");
-
         mItems.add(item);
+
+        PostNotification noti = new PostNotification(PostActivity.this);
+        noti.send(item.getTitle() + " című posztod publikálásra került!");
+
 
         Intent toList = new Intent(PostActivity.this, ListBlogsActivity.class);
         startActivity(toList);
-
-
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -132,10 +153,7 @@ public class PostActivity extends AppCompatActivity
         blogImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 checkAndRequestForPermission();
-
             }
         });
 
@@ -161,7 +179,6 @@ public class PostActivity extends AppCompatActivity
                         PReqCode);
             }
         }
-
 
         openGallery();
     }

@@ -42,6 +42,7 @@
                 android:ems="10"
                 android:hint="Cím..."
                 android:inputType="textPersonName"
+                android:minHeight="48dp"
                 tools:ignore="MissingConstraints" />
 
             <EditText
@@ -54,6 +55,7 @@
                 android:gravity="start|top"
                 android:hint="Sztori..."
                 android:inputType="textMultiLine"
+                android:minHeight="48dp"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button

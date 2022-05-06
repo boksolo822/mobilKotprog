@@ -23,6 +23,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText editTextPassword;
     private EditText editTextPasswordConfirm;
     private Button registrationButton;
+    private Button toLoginBtn;
 
 
     private FirebaseAuth mAuth;
@@ -37,6 +38,14 @@ public class RegistrationActivity extends AppCompatActivity {
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         editTextPasswordConfirm = (EditText) findViewById(R.id.editTextPasswordConfirm);
         registrationButton = (Button) findViewById(R.id.registrationButton);
+        toLoginBtn = (Button) findViewById(R.id.toLoginButton);
+
+        toLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                toLogin();
+            }
+        });
 
         registrationButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,13 +68,13 @@ public class RegistrationActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     toLogin();
                                 } else {
-                                    Log.e(LOG_TAG, "onComplete: Failed=" + task.getException().getMessage());
+
                                 }
                             }
                         });
 
                     } else {
-                        Toast.makeText(RegistrationActivity.this, "A jelszavak nem egyeznek", Toast.LENGTH_LONG);
+                        Toast.makeText(RegistrationActivity.this, "A jelszavak nem egyeznek", Toast.LENGTH_LONG).show();
                     }
 
 

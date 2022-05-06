@@ -66,7 +66,8 @@ public class MyPostsAdapter extends RecyclerView.Adapter < MyPostsAdapter.ViewHo
         public void bindTo(BlogItem currentItem) {
             titleText.setText(currentItem.getTitle());
             Glide.with(context).load(currentItem.getImage()).into(itemImage);
-            itemView.findViewById(R.id.readButton).setOnClickListener(view -> ((ListBlogsActivity) context).toRead(currentItem));
+            itemView.findViewById(R.id.readButton).setOnClickListener(view -> ((MyPosts) context).toRead(currentItem));
+            itemView.findViewById(R.id.deleteButton).setOnClickListener(view -> ((MyPosts) context).deleteItem(currentItem));
         }
     }
 
