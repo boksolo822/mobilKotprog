@@ -9,7 +9,7 @@ Javításhoz, keresést megkönnyítő:
 
 LifecycleHook pl a ListBlogsActivity-ben van (onRestart)
 ConstraintLayouton kívüli layout pl a list_blogs.xml-ben van
-Az egyik animáció bejelentkezéskor van a logón, a másik a "Posztolás" gombon megnyomáskor.
+Az egyik animáció bejelentkezéskor van a logón (csak az álló layouton), a másik a "Posztolás" gombon megnyomáskor.
 Permissionos erőforrás a galéria megnyitás illetve kép betöltés.
 Notification: Új poszt hozzáadásakor
 CRUD: Update nincs, és nincs AsyncTask-ba kiszervezve. 
