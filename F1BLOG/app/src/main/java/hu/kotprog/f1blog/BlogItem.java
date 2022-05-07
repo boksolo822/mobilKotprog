@@ -46,4 +46,8 @@ private String id;
     public int getClicks() {
         return clicks;
     }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
 }
