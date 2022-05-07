@@ -44,7 +44,7 @@ public class ListBlogsActivity extends AppCompatActivity {
     private void queryData() {
         mItemList.clear();
 
-        Query whereQuery=mItems.orderBy("clicks");
+        Query whereQuery=mItems.orderBy("clicks",Query.Direction.DESCENDING);
             whereQuery.get().addOnSuccessListener(queryDocumentSnapshots -> {
 
             for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
