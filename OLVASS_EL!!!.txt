@@ -1,0 +1,18 @@
+Kedves Javító!
+
+Egy kis help az appal kapcsolatban:
+
+-Új poszt hozáadásához ki kell választani képet is a sötét mezőre koppintva, a címet beírni és a sztorit ki kell tölteni, különben kicrashel
+
+
+Javításhoz, keresést megkönnyítő:
+
+LifecycleHook pl a ListBlogsActivity-ben van (onRestart)
+ConstraintLayouton kívüli layout pl a list_blogs.xml-ben van
+Az egyik animáció bejelentkezéskor van a logón, a másik a "Posztolás" gombon megnyomáskor.
+Permissionos erőforrás a galéria megnyitás illetve kép betöltés.
+Notification: Új poszt hozzáadásakor
+CRUD: Update nincs, és nincs AsyncTask-ba kiszervezve. 
+Az egyik lekérdezés az alap listázáskor van kattintás szám szerint, a másik a "Posztjaim" fülnél csak az aktuális user posztjait listázza
+
+
